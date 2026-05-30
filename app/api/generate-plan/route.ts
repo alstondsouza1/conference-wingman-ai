@@ -7,28 +7,228 @@ type RequestBody = {
     sponsors: string[];
   };
   
-  const sponsorNotes: Record<string, string> = {
-    AWS: "cloud infrastructure, AI services, and scalable backend systems",
-    Pulumi: "infrastructure as code, cloud engineering, and developer platforms",
-    Elastic: "search, observability, logs, and data-heavy products",
-    Render: "cloud hosting, backend deployment, and developer experience",
-    Expo: "React Native, mobile apps, and cross-platform development",
-    Vapi: "voice AI, conversational agents, and real-time AI products",
-    Apify: "web automation, scraping, agents, and real-time web data",
-    CopilotKit: "AI features inside real applications",
-    Auth0: "identity, authentication, and app security",
-    Cloudflare: "performance, web infrastructure, edge computing, and security",
-    Uber: "large-scale systems and product engineering",
-    Warp: "developer tools, terminals, and AI-assisted workflows",
-    Box: "content storage, file workflows, collaboration, and Box AI",
+  const sponsorNotes: Record<
+    string,
+    {
+      focus: string;
+      reason: string;
+      opener: string;
+      questions: string[];
+      projectIdea: string;
+    }
+  > = {
+    AWS: {
+      focus: "cloud systems, AI services, backend infrastructure",
+      reason:
+        "AWS is a strong stop if you want to understand how real apps scale and how AI products are deployed.",
+      opener:
+        "I’m learning full-stack development and AI tools. What is a small AWS project that would show I understand cloud basics?",
+      questions: [
+        "What AWS service should a student learn first if they want to build AI-backed apps?",
+        "What makes an early-career cloud project look realistic instead of just tutorial-based?",
+        "How do teams decide when to use serverless versus a traditional backend?",
+      ],
+      projectIdea:
+        "Build a small app that uploads notes, summarizes them, and stores results using AWS services.",
+    },
+  
+    Pulumi: {
+      focus: "infrastructure as code, cloud engineering, developer platforms",
+      reason:
+        "Pulumi is useful if you want to talk about how teams manage cloud infrastructure without doing everything manually.",
+      opener:
+        "I’ve deployed apps before, but I’m new to infrastructure as code. How should a student start learning it without getting overwhelmed?",
+      questions: [
+        "What is a beginner-friendly infrastructure-as-code project?",
+        "What mistakes do new developers make when deploying cloud apps?",
+        "How much cloud knowledge should a junior developer have before learning Pulumi?",
+      ],
+      projectIdea:
+        "Create a one-command deployment setup for a simple Next.js or Node app.",
+    },
+  
+    Elastic: {
+      focus: "search, observability, logs, analytics",
+      reason:
+        "Elastic is worth visiting if you want to learn how teams debug, search, and understand large systems.",
+      opener:
+        "I’ve built apps, but I’m still learning how teams monitor them after deployment. What should I learn first?",
+      questions: [
+        "What logs or metrics should every beginner backend project track?",
+        "How can a student show observability skills in a portfolio project?",
+        "What is the difference between search and observability from an engineering point of view?",
+      ],
+      projectIdea:
+        "Add searchable logs or analytics to a project dashboard.",
+    },
+  
+    Render: {
+      focus: "hosting, deployment, backend services, developer experience",
+      reason:
+        "Render is useful if you want to talk about shipping projects and making deployed apps reliable.",
+      opener:
+        "I’m trying to make my portfolio projects feel more production-ready. What should I improve after deploying an app?",
+      questions: [
+        "What makes a deployed student project stand out?",
+        "What deployment mistakes do beginners usually make?",
+        "How should I explain deployment work on my resume?",
+      ],
+      projectIdea:
+        "Deploy a full-stack app with environment variables, API routes, and a clean README.",
+    },
+  
+    Expo: {
+      focus: "React Native, mobile apps, cross-platform development",
+      reason:
+        "Expo is a strong match if you already know React and want to branch into mobile apps.",
+      opener:
+        "I know React and Next.js. What changes when moving from web apps to mobile apps with Expo?",
+      questions: [
+        "What is a good first Expo project for someone with React experience?",
+        "What mobile development concepts surprise web developers the most?",
+        "How can I make a React Native project look polished enough for a portfolio?",
+      ],
+      projectIdea:
+        "Turn ConferenceWingman into a mobile conference companion app.",
+    },
+  
+    Vapi: {
+      focus: "voice AI, conversational agents, real-time AI",
+      reason:
+        "Vapi is useful if you want to understand voice agents and real-time AI product design.",
+      opener:
+        "I’ve seen chat-based AI apps, but voice AI feels different. What makes a good voice agent actually useful?",
+      questions: [
+        "What is harder about voice AI compared to chat AI?",
+        "How do teams test whether a voice agent is giving a good user experience?",
+        "What is a simple voice AI project a student could build in a weekend?",
+      ],
+      projectIdea:
+        "Add a voice-based practice mode where students rehearse networking conversations.",
+    },
+  
+    Apify: {
+      focus: "web automation, scraping, data collection, agents",
+      reason:
+        "Apify is central to this project because it helps gather sponsor research and turn public web data into useful context.",
+      opener:
+        "I’m using Apify in my hackathon project to research conference sponsors. What is the best way to make web data useful without overwhelming the user?",
+      questions: [
+        "What makes a good Apify Actor use case?",
+        "How should developers clean or summarize scraped web data before using it in an app?",
+        "What are common mistakes when building web automation projects?",
+      ],
+      projectIdea:
+        "Create a sponsor research pipeline that finds company pages and turns them into networking talking points.",
+    },
+  
+    CopilotKit: {
+      focus: "AI features inside apps, copilots, agent interfaces",
+      reason:
+        "CopilotKit is helpful if you want to build AI into an app workflow instead of making a separate chatbot.",
+      opener:
+        "I’m trying to make my app feel like a useful workflow tool, not just a chatbot. What makes an AI feature actually helpful?",
+      questions: [
+        "What is the difference between a copilot and a regular chatbot?",
+        "Where do AI features fit best inside a user interface?",
+        "How can a student avoid building an AI wrapper that feels generic?",
+      ],
+      projectIdea:
+        "Add an in-app assistant that helps refine networking notes and follow-up messages.",
+    },
+  
+    Auth0: {
+      focus: "authentication, identity, security",
+      reason:
+        "Auth0 is a good stop if you want to understand secure login and user identity in real apps.",
+      opener:
+        "I’ve added basic login before, but I want to understand what professional teams care about with authentication.",
+      questions: [
+        "What authentication mistakes do beginners make most often?",
+        "What should I know about OAuth before applying for backend or full-stack roles?",
+        "How can I describe authentication work clearly on a resume?",
+      ],
+      projectIdea:
+        "Add login so each attendee can save their own conference notes securely.",
+    },
+  
+    Cloudflare: {
+      focus: "edge computing, performance, security, web infrastructure",
+      reason:
+        "Cloudflare is valuable if you want to learn how apps stay fast, safe, and reliable on the web.",
+      opener:
+        "I’m interested in full-stack apps. What should I learn about performance and security beyond just writing React code?",
+      questions: [
+        "What is a simple way to understand edge computing?",
+        "What performance issue should every beginner web developer know how to fix?",
+        "How do security and performance connect in modern web apps?",
+      ],
+      projectIdea:
+        "Add caching, rate limiting, or edge deployment to a student project.",
+    },
+  
+    Uber: {
+      focus: "large-scale engineering, product systems, reliability",
+      reason:
+        "Uber is useful if you want to understand how large engineering teams build and maintain complex systems.",
+      opener:
+        "I’m early in my career and trying to understand what engineering looks like at large scale. What should I focus on now?",
+      questions: [
+        "How do junior engineers contribute to large production systems?",
+        "What fundamentals matter most for working on high-scale products?",
+        "What project would show strong backend or systems thinking?",
+      ],
+      projectIdea:
+        "Build a simple real-time tracking or dispatch-style app to practice system design basics.",
+    },
+  
+    Warp: {
+      focus: "developer tools, terminal workflows, AI productivity",
+      reason:
+        "Warp is a great booth if you care about developer experience and tools that make engineers faster.",
+      opener:
+        "I use the terminal a lot for projects, but I’m still learning better workflows. What habits make developers faster?",
+      questions: [
+        "What makes a developer tool feel good instead of frustrating?",
+        "How should students improve their terminal and Git workflow?",
+        "What is a good developer-tool project for a portfolio?",
+      ],
+      projectIdea:
+        "Build a small CLI that helps students create project notes, commits, or README drafts.",
+    },
+  
+    Box: {
+      focus: "file workflows, content storage, collaboration, Box AI",
+      reason:
+        "Box is central to this project because the final field guide and follow-up notes are saved into a Box workspace.",
+      opener:
+        "I’m using Box as the storage workspace for my hackathon project. What makes a file-based workflow useful for teams?",
+      questions: [
+        "What are strong use cases for storing AI-generated documents in Box?",
+        "How do teams organize files so they stay useful after a project ends?",
+        "What would make my Box workflow stronger from a product perspective?",
+      ],
+      projectIdea:
+        "Save each conference field guide and recruiter note directly into Box as a living workspace.",
+    },
   };
+  
+  function cleanApifyText(raw: string) {
+    return raw
+      .replace(/!\[[^\]]*]\([^)]*\)/g, "")
+      .replace(/\([^)]*\.(png|jpg|jpeg|svg|webp)[^)]*\)/gi, "")
+      .replace(/logo/gi, "")
+      .replace(/\s+/g, " ")
+      .trim()
+      .slice(0, 220);
+  }
   
   async function getApifySponsorResearch(goal: string, skills: string) {
     const token = process.env.APIFY_TOKEN;
   
     if (!token) {
       return [
-        "Apify token not configured yet. Using built-in CascadiaJS sponsor notes for the local demo.",
+        "Apify was not connected for this run, so the app used the built-in sponsor guide.",
       ];
     }
   
@@ -36,7 +236,7 @@ type RequestBody = {
       const actorId = "apify~rag-web-browser";
   
       const input = {
-        query: `CascadiaJS 2026 sponsors AWS Pulumi Elastic Render Expo Vapi Apify CopilotKit Auth0 Cloudflare Uber Warp Box. Find short useful notes for a student interested in ${goal} with skills ${skills}.`,
+        query: `CascadiaJS 2026 sponsor pages for AWS, Expo, Elastic, CopilotKit, Apify, Box. Summarize useful talking points for a student interested in ${goal} with skills ${skills}. Do not include image names or logo text.`,
         maxResults: 5,
       };
   
@@ -53,7 +253,7 @@ type RequestBody = {
   
       if (!response.ok) {
         return [
-          "Apify research was attempted, but the actor response was not available during this run. The app used local sponsor notes instead.",
+          "Apify actor was called, but the app used the built-in sponsor guide as backup.",
         ];
       }
   
@@ -61,24 +261,36 @@ type RequestBody = {
   
       if (!Array.isArray(data) || data.length === 0) {
         return [
-          "Apify research returned no items for this run. The app used local sponsor notes instead.",
+          "Apify returned no readable results, so the app used the built-in sponsor guide as backup.",
         ];
       }
   
-      return data
-        .slice(0, 5)
-        .map((item: Record<string, unknown>, index: number) => {
-          const text =
-            String(item.text || item.content || item.markdown || item.title || "")
-              .replace(/\s+/g, " ")
-              .trim()
-              .slice(0, 260) || "No readable summary returned.";
+      return data.slice(0, 5).map((item: Record<string, unknown>, index: number) => {
+        const url =
+          typeof item.url === "string"
+            ? item.url
+            : typeof item["Page URL"] === "string"
+            ? item["Page URL"]
+            : "";
   
-          return `${index + 1}. ${text}`;
-        });
+        const title =
+          typeof item.title === "string"
+            ? item.title
+            : typeof item["Page title"] === "string"
+            ? item["Page title"]
+            : "Sponsor research result";
+  
+        const rawText = String(
+          item.text || item.content || item.markdown || item.description || ""
+        );
+  
+        const text = cleanApifyText(rawText) || "Sponsor page found and included.";
+  
+        return `${index + 1}. ${title}${url ? `\n   Source: ${url}` : ""}\n   Note: ${text}`;
+      });
     } catch {
       return [
-        "Apify research could not complete during this run. The app used local sponsor notes instead.",
+        "Apify actor was called, but the app used the built-in sponsor guide as backup.",
       ];
     }
   }
@@ -86,79 +298,119 @@ type RequestBody = {
   export async function POST(request: Request) {
     const body: RequestBody = await request.json();
   
-    const attendeeName = body.name || "Conference attendee";
+    const attendeeName = body.name?.trim() || "Conference attendee";
     const goal =
-      body.goal || "software engineering internship or early-career tech role";
-    const skills = body.skills || "web development, AI tools, and software projects";
-    const comfort = body.comfort || "still getting comfortable with networking";
-    const resume = body.resume || "No extra resume background was added.";
+      body.goal?.trim() ||
+      "software engineering internship or early-career tech role";
+    const skills =
+      body.skills?.trim() || "web development, AI tools, and software projects";
+    const comfort =
+      body.comfort?.trim() || "I want a simple plan before talking to people.";
+    const resume = body.resume?.trim() || "No extra resume background was added.";
   
-    const selectedCompanies = (body.sponsors || []).slice(0, 7);
+    const companies = (body.sponsors || [])
+      .filter((company) => sponsorNotes[company])
+      .slice(0, 7);
+  
     const apifyResearch = await getApifySponsorResearch(goal, skills);
   
-    const plan = `
-  ConferenceWingman Brief
+    const priorityCompanies = companies.slice(0, 3);
+    const secondaryCompanies = companies.slice(3);
   
-  For: ${attendeeName}
+    const companySection = companies
+      .map((company, index) => {
+        const info = sponsorNotes[company];
+  
+        return `${index + 1}. ${company}
+  
+  Focus:
+  ${info.focus}
+  
+  Why stop here:
+  ${info.reason}
+  
+  Your opener:
+  "${info.opener}"
+  
+  Ask these:
+  - ${info.questions[0]}
+  - ${info.questions[1]}
+  - ${info.questions[2]}
+  
+  Mini follow-up note:
+  Person:
+  Role:
+  Advice:
+  Next step:
+  
+  Portfolio idea from this booth:
+  ${info.projectIdea}`;
+      })
+      .join("\n\n---\n\n");
+  
+    const plan = `
+  CONFERENCEWINGMAN FIELD GUIDE
+  
+  Attendee: ${attendeeName}
   Goal: ${goal}
   Skills to highlight: ${skills}
   Networking comfort: ${comfort}
   
-  How this brief was built
+  Built with:
+  - Apify: sponsor research and conference context
+  - Box: saved guide, notes, and follow-up workspace
   
-  - Sponsor list: CascadiaJS 2026 sponsor data
-  - Research layer: Apify web research / actor workflow
-  - Storage layer: Box download workflow for saving and updating the brief
+  TODAY'S GAME PLAN
   
-  Apify research notes
+  Start with these three booths:
+  ${priorityCompanies.map((company) => `- ${company}`).join("\n")}
   
-  ${apifyResearch.join("\n")}
+  Then visit if time:
+  ${
+    secondaryCompanies.length > 0
+      ? secondaryCompanies.map((company) => `- ${company}`).join("\n")
+      : "- No secondary booths selected"
+  }
   
-  Before walking into the venue
+  Rule for the day:
+  Have fewer conversations, but make them better. A good 4-minute conversation with a follow-up note is more valuable than collecting ten stickers and forgetting every name.
   
-  Pick 3 companies first. Do not try to talk to everyone. Have one normal conversation, ask one useful question, and write down one follow-up note before moving on.
+  APIFY RESEARCH SNAPSHOT
   
-  Best booths to start with
+  ${apifyResearch.join("\n\n")}
   
-  ${selectedCompanies
-    .map((company, index) => {
-      const note = sponsorNotes[company] || "modern software and developer tools";
+  BOOTH GUIDE
   
-      return `${index + 1}. ${company}
+  ${companySection}
   
-  Why this booth is worth visiting:
-  ${company} connects with ${note}. This gives you a natural reason to ask about engineering work, student opportunities, and what skills matter.
+  YOUR 30-SECOND INTRO
   
-  Easy opener:
-  "Hi, I’m ${attendeeName}. I’m a student interested in ${goal}. I’ve been working with ${skills}. I’m trying to learn what teams like yours look for in early-career developers. Could I ask you one quick question?"
+  Hi, I’m ${attendeeName}. I’m interested in ${goal}. I’ve been working with ${skills}, and I’m here to learn how real teams build web, AI, and developer tools. I’m especially trying to understand what projects or skills would make me stronger for early-career roles.
   
-  Good questions:
-  - What kind of work do interns or junior developers usually help with?
-  - What skill would make a student stand out to your team?
-  - What project would you recommend building to learn this area better?
+  IF YOU GET NERVOUS, SAY THIS
   
-  After the conversation, write this down:
-  Person I met:
+  "Can I ask a beginner-friendly question? I’m trying to understand what your company builds and what students should learn if they want to work in this space."
+  
+  AFTER EACH CONVERSATION
+  
+  Copy this into your Box note:
+  
   Company:
-  Best advice they gave:
-  Follow-up action:
-  `;
-    })
-    .join("\n")}
+  Person:
+  What they work on:
+  One useful thing they said:
+  Follow-up needed:
+  LinkedIn sent? Yes / No
   
-  One-minute intro
-  
-  Hi, I’m ${attendeeName}. I’m interested in ${goal}. I’ve been building projects with ${skills}, and I’m here at CascadiaJS to learn from engineers, meet companies, and understand how I can keep growing as a developer.
-  
-  LinkedIn follow-up
+  LINKEDIN MESSAGE
   
   Hi [Name], it was great meeting you at CascadiaJS. I appreciated your advice about [specific topic]. I’m continuing to build my skills in ${skills}, and I’d love to stay connected.
   
-  Box workflow
+  BOX WORKSPACE
   
-  Download this brief and save it in Box. After each conversation, update the file with names, notes, and follow-up tasks.
+  Save this guide in Box before the conference day starts. During the event, update it with names, advice, and follow-up tasks. After the conference, Box becomes your record of who you met and what to do next.
   
-  Background notes
+  BACKGROUND NOTES
   
   ${resume}
   `;
