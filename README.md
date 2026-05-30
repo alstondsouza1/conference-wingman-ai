@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ConferenceWingman
 
-## Getting Started
+ConferenceWingman is a Cascadia AI Hackathon 2026 project that helps students and early-career developers prepare for tech conferences.
 
-First, run the development server:
+## Problem
+
+Many students attend conferences but do not know which sponsor booths to visit, what questions to ask, or how to follow up after meeting people.
+
+## Solution
+
+ConferenceWingman creates a personal conference field guide. The app uses Apify to research sponsor context, generates booth priorities and conversation starters, then saves the guide into Box for follow-up notes.
+
+## Features
+
+- Attendee profile form
+- Sponsor research using Apify
+- Personalized booth recommendations
+- Different openers and questions for each sponsor
+- 30-second intro
+- LinkedIn follow-up template
+- Download guide as a text file
+- Save guide directly to Box
+
+## Tech Stack
+
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- Apify RAG Web Browser
+- Box API
+
+## Sponsor Technology Used
+
+### Apify
+
+Apify is used as the research layer. The app calls the Apify RAG Web Browser actor to gather sponsor context from CascadiaJS sponsor pages.
+
+### Box
+
+Box is used as the storage layer. The final field guide is saved into a Box folder so the attendee can update it with notes, names, and follow-up tasks after each conversation.
+
+## How to Run Locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
