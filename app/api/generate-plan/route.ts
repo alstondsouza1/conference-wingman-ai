@@ -1,44 +1,71 @@
-export async function POST(request: Request) {
-    const body = await request.json();
+type RequestBody = {
+    name: string;
+    goal: string;
+    skills: string;
+    resume: string;
+    sponsors: string[];
+  };
+  
+  export async function POST(request: Request) {
+    const body: RequestBody = await request.json();
   
     const { name, goal, skills, resume, sponsors } = body;
   
-    const topCompanies = sponsors.slice(0, 5);
+    const selectedCompanies = sponsors.slice(0, 6);
   
     const plan = `
-  ConferenceWingman AI Networking Plan
+  CONFERENCEWINGMAN AI PLAN
   
-  Attendee:
+  Attendee
   ${name || "Conference attendee"}
   
-  Career Goal:
-  ${goal || "Software engineering opportunity"}
+  Career Goal
+  ${goal || "Software engineering internship or early-career tech opportunity"}
   
-  Skills:
-  ${skills || "Not provided"}
+  Skills
+  ${skills || "No skills provided"}
   
-  Top Companies to Meet:
-  ${topCompanies
+  Best Companies to Meet
+  
+  ${selectedCompanies
     .map(
-      (company: string, index: number) =>
+      (company, index) =>
         `${index + 1}. ${company}
-  Reason: This company connects with your interest in software, AI, web development, or cloud technology.
+  
+  Why this is a good match:
+  This sponsor connects with your interest in software engineering, AI, web development, developer tools, or cloud technology.
+  
   Questions to ask:
-  - What kinds of early-career opportunities do you offer?
-  - What skills do your teams value most in junior developers?
-  - How is your team using AI or modern web technologies?`
+  - What kinds of early-career or internship opportunities does your team offer?
+  - What technical skills would make a student stand out to your company?
+  - How is your team using AI, automation, or modern web technologies?
+  - What advice would you give someone trying to break into this area?
+  
+  Conversation starter:
+  Hi, I’m ${name || "a student developer"}. I’m interested in ${
+          goal || "software engineering"
+        } and I’m learning how companies like ${company} build real-world products. I’d love to hear what your team works on and what skills you recommend students focus on.`
     )
     .join("\n\n")}
   
-  Elevator Pitch:
-  Hi, I'm ${name || "a student developer"}. I'm interested in ${
+  One-Minute Elevator Pitch
+  
+  Hi, I’m ${name || "a student developer"}. I’m interested in ${
       goal || "software engineering"
-    } and have experience with ${skills || "web development and AI"}. I'm attending CascadiaJS to learn, meet engineers, and explore opportunities where I can contribute and grow.
+    } and have experience with ${
+      skills || "web development, software projects, and AI tools"
+    }. I’m attending CascadiaJS to learn from engineers, connect with companies, and find ways to grow as a developer.
   
-  LinkedIn Follow-Up Message:
-  Hi, it was great meeting you at CascadiaJS. I enjoyed learning about your work and would love to stay connected. I'm currently exploring software engineering opportunities and continuing to build projects in AI and full-stack development.
+  LinkedIn Follow-Up Message
   
-  Resume Notes:
+  Hi, it was great meeting you at CascadiaJS. I enjoyed learning about your work and your advice for early-career developers. I’d love to stay connected and keep learning from your experience.
+  
+  Box Storage Note
+  
+  This plan can be downloaded and saved into Box as the attendee’s personal conference networking file.
+  
+  Resume / Background Used
+  
   ${resume || "No resume text provided."}
   `;
   
